@@ -1,3 +1,4 @@
+import { Toaster } from "@/components/ui/sonner";
 import QueryProviders from "@/providers/QueryProvider";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
@@ -15,7 +16,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "PH Healthcare Management System",
-  description: "A comprehensive management system by Programming Hero",
+  description:
+    "A comprehensive healthcare management system built with Next.js, TypeScript, and Tailwind CSS. This application provides features for managing patient records, appointments, billing, and more, ensuring efficient healthcare administration.",
 };
 
 export default function RootLayout({
@@ -27,9 +29,11 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        suppressHydrationWarning
       >
-        <QueryProviders>{children}</QueryProviders>
+        <QueryProviders>
+          {children}
+          <Toaster position="top-right" richColors />
+        </QueryProviders>
       </body>
     </html>
   );
