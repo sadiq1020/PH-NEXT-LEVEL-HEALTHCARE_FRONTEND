@@ -2,7 +2,7 @@ import DateCell from "@/components/shared/cell/DateCell";
 import StatusBadgeCell from "@/components/shared/cell/StatusBadgeCell";
 import UserInfoCell from "@/components/shared/cell/UserInfoCell";
 import { Badge } from "@/components/ui/badge";
-import { IDoctor } from "@/types/doctor.types";
+import { IDoctor, UserStatus } from "@/types/doctor.types";
 import { ColumnDef } from "@tanstack/react-table";
 import { Star } from "lucide-react";
 
@@ -114,7 +114,9 @@ export const doctorColumns: ColumnDef<IDoctor>[] = [
     accessorKey: "user.status",
     header: "Status",
     cell: ({ row }) => {
-      return <StatusBadgeCell status={row.original.user.status} />;
+      return (
+        <StatusBadgeCell status={row.original.user.status as UserStatus} />
+      );
     },
   },
   {

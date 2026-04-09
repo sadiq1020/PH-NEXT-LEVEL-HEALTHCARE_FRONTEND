@@ -1,4 +1,4 @@
-import DoctorsList from "@/components/modules/Consultation/doctorsList";
+import DoctorsList from "@/components/modules/Consultation/DoctorsList";
 import { getDoctors } from "@/services/doctor.services";
 import {
   dehydrate,
@@ -11,7 +11,7 @@ const ConsultationPage = async () => {
 
   await queryClient.prefetchQuery({
     queryKey: ["doctors"],
-    queryFn: getDoctors,
+    queryFn: () => getDoctors(""),
   });
   return (
     // Neat! Serialization is now as easy as passing props.

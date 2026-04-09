@@ -130,7 +130,14 @@ export interface IDoctorAppointmentItem {
   } | null;
 }
 
-export interface IDoctorDetails extends IDoctor {
+// export interface IDoctorDetails extends IDoctor {
+//   user: IDoctorUserDetails;
+//   appointments?: IDoctorAppointmentItem[];
+//   doctorSchedules?: IDoctorScheduleItem[];
+//   reviews?: IDoctorReview[];
+// }
+
+export interface IDoctorDetails extends Omit<IDoctor, "user"> {
   user: IDoctorUserDetails;
   appointments?: IDoctorAppointmentItem[];
   doctorSchedules?: IDoctorScheduleItem[];

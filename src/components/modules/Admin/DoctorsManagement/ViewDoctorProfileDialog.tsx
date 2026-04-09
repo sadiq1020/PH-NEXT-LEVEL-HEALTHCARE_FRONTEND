@@ -10,6 +10,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { ApiResponse } from "@/types/api.types";
 import { type IDoctor, type IDoctorDetails } from "@/types/doctor.types";
 import { useQuery } from "@tanstack/react-query";
 import { format } from "date-fns";
@@ -60,7 +61,11 @@ const ViewDoctorProfileDialog = ({
   });
 
   const hasError = data && !data.success;
-  const doctorDetails = data && data.success ? data.data : null;
+  //   const doctorDetails = data && data.success ? data.data : null;
+  const doctorDetails = (data as ApiResponse<IDoctorDetails> | undefined)
+    ?.success
+    ? (data as ApiResponse<IDoctorDetails>).data
+    : null;
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>

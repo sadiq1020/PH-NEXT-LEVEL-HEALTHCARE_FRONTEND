@@ -1,10 +1,10 @@
 "use client";
-
+import type { useSearchParams } from "next/navigation";
 import { useCallback, useMemo } from "react";
 import { UpdateParamsFn } from "./useServerManagedDataTable";
 
 interface UseServerManagedDataTableSearchParams {
-  searchParams: ReadonlyURLSearchParams;
+  searchParams: ReturnType<typeof useSearchParams>;
   updateParams: UpdateParamsFn;
   queryKey?: string;
 }
